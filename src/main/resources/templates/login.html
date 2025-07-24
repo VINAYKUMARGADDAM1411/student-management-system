@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - SMS</title>
+    <style>
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('https://i.ibb.co/ccZLzccT/Untitled-design.png')no-repeat center center/cover;;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            background-color: white;
+            padding: 2rem 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #0b3d91;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-box button {
+            width: 100%;
+            background-color: #0b3d91;
+            color: white;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+	<h2 th:text="${role == 'student'} ? 'Student Login' : 'Admin Login'">Login</h2>
+
+
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required/>
+        </div>
+
+        <div th:if="${param.error}" class="error">
+            Invalid username or password.
+        </div>
+
+        <button type="submit">Login</button>
+		
+		<div th:if="${role} == 'student'" style="text-align: center; margin-top: 1rem;">
+		    <a th:href="@{/register}" style="color: #0b3d91; font-weight: bold;">New student? Register here</a>
+		</div>
+		
+		<div th:if="${role} == 'admin'" style="text-align: center; margin-top: 1rem;">
+		    <a th:href="@{/admin-register}" style="color: #0b3d91; font-weight: bold;">New admin? Register here</a>
+		</div>
+
+
+
+    </form>
+</div>
+
+</body>
+</html>

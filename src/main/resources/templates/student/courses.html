@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enrolled Courses</title>
+</head>
+<body>
+<h2>Your Enrolled Courses</h2>
+<table border="1">
+    <tr>
+        <th>Course Name</th>
+        <th>Course Duration</th>
+        <th>Course Description</th>
+    </tr>
+    <tr th:each="enrollment : ${enrollments}">
+        <td th:text="${enrollment.courseName.courseName}">Course Name</td>
+        <td th:text="${enrollment.courseName.duration}">Duration</td>
+        <td th:text="${enrollment.courseName.description}">Description</td>
+    </tr>
+</table>
+</body>
+</html>

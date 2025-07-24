@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Result Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Enter Student Result</h2>
+
+<form th:action="@{/admin/results/save}" th:object="${result}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Student:</label>
+    <select th:field="*{student}" required>
+        <option value="">-- Select Student --</option>
+        <option th:each="student : ${students}" 
+                th:value="${student.id}" 
+                th:text="${student.name}">
+        </option>
+    </select>
+
+    <label>Course:</label>
+    <select th:field="*{course}" required>
+        <option value="">-- Select Course --</option>
+        <option th:each="course : ${courses}" 
+                th:value="${course.id}" 
+                th:text="${course.courseName}">
+        </option>
+    </select>
+
+    <label>Score:</label>
+    <input type="number" th:field="*{score}" min="0" max="100" required />
+
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

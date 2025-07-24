@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SMS - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .bg-image {
+            background: url('https://i.ibb.co/ccZLzccT/Untitled-design.png') no-repeat center center/cover;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            background-color: rgba(11, 61, 145, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .header-buttons a button {
+            margin-left: 10px;
+            padding: 0.5rem 1rem;
+            background-color: white;
+            color: #0b3d91;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .content {
+            color: rgba(11, 61, 145, 0.9);
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .content p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: rgba(11, 61, 145, 0.9);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .content h2 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 1.2rem;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+            }
+
+            .header-buttons a button {
+                margin: 0.3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-image">
+    <header>
+        <div class="header-title">
+            SMS Student Management System
+        </div>
+        <div class="header-buttons">
+            <a th:href="@{/login(role='admin')}"><button>ADMIN</button></a>
+            <a th:href="@{/login(role='student')}"><button>STUDENT</button></a>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Welcome to SMS</h2>
+        <p>Staff & Student Portal</p>
+    </div>
+
+    <footer>
+        © 2025, Student Management System. All Rights Reserved.
+    </footer>
+</div>
+
+</body>
+</html>

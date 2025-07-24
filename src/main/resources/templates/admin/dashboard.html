@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            background:url('https://i.ibb.co/Dfhd9RxB/admin1.png') no-repeat center center/cover;
+            color: #fff;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 6vw;
+            box-sizing: border-box;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.2rem;
+            max-width: 300px;
+            padding: 2rem;
+            margin-right: 8vw;
+        }
+
+        .right h1 {
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            margin-bottom: 1.5rem;
+            color: black;
+        }
+
+        .right a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 0.9rem 0;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease;
+        }
+
+        .right a:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-link {
+            background-color: #dc3545;
+        }
+
+        .logout-link:hover {
+            background-color: #a71d2a;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                justify-content: center;
+                padding: 1rem;
+            }
+
+            .right {
+                align-items: center;
+                margin: 0;
+                width: 90%;
+            }
+
+            .right a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="right">
+        <h1>Welcome, Admin!</h1>
+        <a th:href="@{/admin/students/list}">📚 Manage Students</a>
+        <a th:href="@{/admin/attendance}">📝 Manage Attendance</a>
+        <a th:href="@{/admin/results}">📊 Assign Results</a>
+        <a th:href="@{/admin/courses}">📘 Manage Courses</a>
+        <a th:href="@{/admin/fees}">💰 Manage Exam Fees</a>
+        <a th:href="@{/logout}" class="logout-link">🚪 Logout</a>
+    </div>
+
+</body>
+</html>

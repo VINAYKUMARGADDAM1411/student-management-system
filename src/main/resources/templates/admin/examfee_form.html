@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exam Fee Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #eef2f3;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        label {
+            margin-top: 15px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        option {
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Add Exam Fee</h2>
+    <form th:action="@{/admin/examfees/save}" th:object="${examFee}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label>Student:</label>
+        <select th:field="*{student}" required>
+            <option value="">-- Select Student --</option>
+            <option th:each="student : ${students}"
+                    th:value="${student.id}"
+                    th:text="${student.name}">
+            </option>
+        </select>
+
+        <label>Amount:</label>
+        <input type="number" th:field="*{amount}" step="0.01" placeholder="Enter amount" required />
+
+        <label>Paid Date:</label>
+        <input type="date" th:field="*{paidDate}" required />
+
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>
