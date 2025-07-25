@@ -16,7 +16,7 @@ public class HomeController {
 
     @GetMapping({"/", "/home"})
     public String homePage() {
-        return "home";
+        return "index";
     }
 
     @GetMapping("/login")
@@ -67,6 +67,6 @@ public class HomeController {
                 .anyMatch(auth -> auth.getAuthority().equals("ROLE_STUDENT"))) {
             return "redirect:/student/dashboard";
         }
-        return "redirect:/home";
+        return "redirect:/index";
     }
 }
